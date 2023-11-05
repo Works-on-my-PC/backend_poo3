@@ -19,6 +19,6 @@ public class CotizacionController {
     //TODO: Revisar por que no trae nada de la BD
     @GetMapping("/find")
     public List<Cotizacion> getAll() {
-        return service.findAll();
+        return service.getAll();
     }
 }

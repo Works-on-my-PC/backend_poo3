@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -12,9 +13,12 @@ import java.util.Date;
 public class Cotizacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+    @Column(name = "cod_moneda")
     private String codMoneda;
     private String cotizacion;
-    private double valorEnArs;
+    @Column(name = "valor_en_ars")
+    private BigDecimal valorEnArs;
+    @Column(name = "fecha_de_registro")
     private Date fechaDeRegistro;
 }

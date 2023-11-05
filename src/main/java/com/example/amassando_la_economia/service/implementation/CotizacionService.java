@@ -13,7 +13,8 @@ public class CotizacionService implements ICotizacionService {
     @Autowired
     private CotizacionRepository repository;
 
-    public List<Cotizacion> findAll() {
-        return (List<Cotizacion>) repository.findAll();
+    @Override
+    public List<Cotizacion> getAll() {
+        return repository.findAll();
     }
 }
