@@ -26,6 +26,9 @@ replay_pid*
 # Base de datos
 database/sql-scripts/
 
+# Lista de APIs
+TODO*APIs.txt 
+
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
