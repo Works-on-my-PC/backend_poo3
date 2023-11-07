@@ -1,0 +1,12 @@
+APIs:
+
+Get todas las cotizaciones (las mas recientes)
+Get todas las cotizaciones del dia
+Get por moneda y cotizacion (el mas reciente)
+Get cotizaciones entre dos fechas
+Get porcentaje de variacion cotizaciones
+
+Get todos los plazos fijos (los mas recientes)
+Get plazos fijos por banco (el mas reciente)
+Get plazos fijos entre fechas
+Get porcentaje de variacion plazos fijos
