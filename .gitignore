@@ -230,3 +230,6 @@ README.html
 *.iml
 .idea
 .exercism
+
+### Propiedades de la aplicacion
+/src/main/resources/application.properties
