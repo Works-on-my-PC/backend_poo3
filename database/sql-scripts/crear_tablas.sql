@@ -18,6 +18,7 @@ CREATE TABLE plazos_fijos (
 	tipo tipo_pf NOT NULL,
 	tna numeric(6, 2) NOT NULL,
 	tea numeric(7, 3) GENERATED ALWAYS AS ((POWER((1+(tna/1200)), 12)-1)*100) STORED,
-	banco varchar(100) NOT NULL
+	banco varchar(100) NOT NULL,
+	fecha_de_registro timestamp with time zone
 );
 ALTER TABLE plazos_fijos ADD CONSTRAINT pk_plazos_fijos PRIMARY KEY(id);
