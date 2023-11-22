@@ -8,6 +8,7 @@ Get porcentaje de variacion plazos fijos*/
 package com.example.amassando_la_economia.controller;
 
 import com.example.amassando_la_economia.dto.CotizacionDto;
+import com.example.amassando_la_economia.dto.CotizacionFechaDto;
 import com.example.amassando_la_economia.dto.EstadisticosMonedaDto;
 import com.example.amassando_la_economia.model.Cotizacion;
 import com.example.amassando_la_economia.service.ICotizacionService;
@@ -45,7 +46,7 @@ public class CotizacionController {
                             schema = @Schema(implementation = Cotizacion.class))})
     })
     @GetMapping(path = "/monedas/{fechaDesde}/hasta/{fechaHasta}")
-    public List<CotizacionDto> getAll(
+    public List<CotizacionFechaDto> obtenerMonedasEntreDosFechas(
             @PathVariable("fechaDesde")String fechaDesde,
             @PathVariable("fechaHasta")String fechaHasta) {
         return this.cotizacionService.obtenerMondedasPorFecha(fechaDesde,fechaHasta);
@@ -62,13 +63,15 @@ public class CotizacionController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Cotizacion.class))})
     })
-    @GetMapping(path = "/moneda/{moneda}")
-    public CotizacionDto obtenerUltimaMondedaNombre(
-            @PathVariable("moneda")String moneda) {
-        return this.cotizacionService.obtenerUltimaMondedaNombre(moneda);
+    @GetMapping(path = "/moneda/{moneda}/cotizacion/{cotizacion}")
+    public CotizacionDto obtenerUltimaCotizacion(
+            @PathVariable("moneda")String moneda,
+            @PathVariable("cotizacion")String cotizacion){
+        return this.cotizacionService.obtenerUltimaCotizacion(moneda, cotizacion);
     }
 
 
+    /*
     @Operation(summary = "Obtienes datos estadisticos de una moneda por su nombre")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = ")",
@@ -83,4 +86,5 @@ public class CotizacionController {
             @PathVariable("moneda")String moneda) {
         return this.cotizacionService.obtenerEstadisticos(moneda);
     }
+    */
 }
