@@ -23,7 +23,7 @@ public class CotizacionService implements ICotizacionService {
     @Override
     public List<CotizacionFechaDto> obtenerMondedasPorFecha(String fechaDesde, String fechaHasta) {
         ArrayList<CotizacionFechaDto> cotFechaDtoAList = new ArrayList<>();
-        List<Cotizacion> cotList = this.repository.findAllByfechaDeRegistroBetween(Date.valueOf(fechaDesde), Date.valueOf(fechaHasta));
+        List<Cotizacion> cotList = this.repository.findByfechaDeRegistroBetween(Date.valueOf(fechaDesde), Date.valueOf(fechaHasta));
         for (Cotizacion cot :
                 cotList) {
             cotFechaDtoAList.add(CotizacionMapper.cotizacionToCotizacionFechaDto(cot));

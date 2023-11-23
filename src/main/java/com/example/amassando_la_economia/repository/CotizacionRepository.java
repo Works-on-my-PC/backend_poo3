@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CotizacionRepository extends JpaRepository<Cotizacion, Integer> {
-    List<Cotizacion> findAllByfechaDeRegistroBetween(Date fechaDesde, Date fechaHasta);
+    List<Cotizacion> findByfechaDeRegistroBetween(Date fechaDesde, Date fechaHasta);
 
     Cotizacion findTopByCodMonedaAndCotizacionOrderByFechaDeRegistroDesc(String codMoneda, String cotizacion);
 }
