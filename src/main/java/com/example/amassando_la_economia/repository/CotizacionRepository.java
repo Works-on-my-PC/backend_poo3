@@ -4,6 +4,7 @@ import com.example.amassando_la_economia.model.Cotizacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

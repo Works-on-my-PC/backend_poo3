@@ -9,7 +9,6 @@ package com.example.amassando_la_economia.controller;
 
 import com.example.amassando_la_economia.dto.CotizacionDto;
 import com.example.amassando_la_economia.dto.CotizacionFechaDto;
-import com.example.amassando_la_economia.dto.EstadisticosMonedaDto;
 import com.example.amassando_la_economia.model.Cotizacion;
 import com.example.amassando_la_economia.service.ICotizacionService;
 import org.springframework.beans.factory.annotation.Autowired;
