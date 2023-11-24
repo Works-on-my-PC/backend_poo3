@@ -8,7 +8,9 @@ import com.example.amassando_la_economia.model.Cotizacion;
 import com.example.amassando_la_economia.repository.CotizacionRepository;
 import com.example.amassando_la_economia.service.ICotizacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -35,6 +37,12 @@ public class CotizacionService implements ICotizacionService {
     public CotizacionDto obtenerUltimaCotizacion(String codMoneda, String cotizacion) {
         Cotizacion cot = this.repository.findTopByCodMonedaAndCotizacionOrderByFechaDeRegistroDesc(codMoneda, cotizacion);
         return CotizacionMapper.cotizacionToCotizacionDto(cot);
+    }
+
+    @Override
+    public String consumirApiExternaDolar(String url) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(url, String.class);
     }
 
     /*

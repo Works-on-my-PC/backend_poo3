@@ -12,6 +12,8 @@ import com.example.amassando_la_economia.dto.CotizacionFechaDto;
 import com.example.amassando_la_economia.model.Cotizacion;
 import com.example.amassando_la_economia.service.ICotizacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +27,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+@EnableScheduling
 @RestController
 @RequestMapping(path="/api/cotizaciones")
 public class CotizacionController {
@@ -67,6 +71,21 @@ public class CotizacionController {
             @PathVariable("moneda")String moneda,
             @PathVariable("cotizacion")String cotizacion){
         return this.cotizacionService.obtenerUltimaCotizacion(moneda, cotizacion);
+    }
+
+    @Operation(summary = "Obtienes valor actualizado del dolar por medio de una api externa")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Obtener valor actualizado del dolar",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Cotizacion.class))}),
+            @ApiResponse(responseCode = "404", description = "Error",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Cotizacion.class))})
+    })
+    @GetMapping(path = "/usd-hoy")
+    public String consumirApiExternaDolar() {
+        String url = "https://www.dolarito.ar/_next/data/m-3qw1GXm3SBrhbAS7lNU/cotizacion/dolar-hoy.json";
+        return this.cotizacionService.consumirApiExternaDolar(url);
     }
 
 

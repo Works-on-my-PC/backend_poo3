@@ -13,5 +13,7 @@ public interface ICotizacionService {
 
     CotizacionDto obtenerUltimaCotizacion(String codMoneda, String cotizacion);
 
+    String consumirApiExternaDolar(String url);
+
     //EstadisticosMonedaDto obtenerEstadisticos(String moneda);
 }
